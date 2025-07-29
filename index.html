@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Profile - Sarah Johnson</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5em;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: #0ea5e9;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Profile Header */
+        .profile-header {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .profile-top {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .profile-avatar {
+            position: relative;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+        }
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .status-indicator {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            width: 20px;
+            height: 20px;
+            background: #10b981;
+            border: 3px solid white;
+            border-radius: 50%;
+        }
+
+        .profile-info h2 {
+            font-size: 2em;
+            color: #1e293b;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .profile-info .position {
+            font-size: 1.1em;
+            color: #0ea5e9;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .profile-info .department {
+            color: #64748b;
+            margin-bottom: 16px;
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 12px;
+            margin-left: auto;
+        }
+
+        
+        .profile-details {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .detail-item i {
+            color: #0ea5e9;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #dcfce7;
+            color: #166534;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .status-badge i {
+            font-size: 8px;
+        }
+       
+
+        /* Stats Row */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Main Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .left-column,
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-title h3 {
+            color: #1e293b;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .card-icon {
+            width: 32px;
+            height: 32px;
+            background: #e0f2fe;
+            color: #0ea5e9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        /* Contact Information */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f8fafc;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-icon {
+            width: 32px;
+            height: 32px;
+            background: #f8fafc;
+            color: #64748b;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 12px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        .contact-value {
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+    
+
+
+        /* Recent Activity */
+        .activity-item {
+            display: flex;
+            justify-content: center; /* horizontally center */
+            align-items: center;
+            padding-bottom: 20px;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 32px;
+            height: 32px;
+            background: #e0f2fe;
+            color: #0ea5e9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-text {
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .activity-time {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        /* Business Card */
+        .business-card {
+            width: 350px;
+            height: 200px;
+            background: #f5f3f0;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .business-card .main-section {
+            height: 140px;
+            padding: 20px;
+            position: relative;
+            background: #f5f3f0;
+        }
+
+        .business-card .company-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .business-card .company-logo {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .business-card .company-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #10218b;
+            letter-spacing: 1px;
+        }
+
+        .business-card .employee-info {
+            position: absolute;
+            right: 20px;
+            top: 60px;
+            text-align: right;
+        }
+
+        .business-card .card-employee-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .business-card .card-employee-position {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .business-card .card-contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .business-card .card-contact-item {
+            font-size: 12px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .business-card .blue-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: #5a67d8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .business-card .website-text {
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .business-card .footer-logo {
+            width: 50px;
+            height: 45px;
+            object-fit: contain;
+            opacity: 0.9;
+            filter: brightness(0) invert(1);
+            padding-right: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-top {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .profile-actions {
+                margin-left: 0;
+                justify-content: center;
+            }
+            
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            
+            .header-content {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+        @media (max-width: 480px) {
+            .profile-details {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .breadcrumb{
+                display: none;
+            }
+            .business-card {
+                width: 342px;             /* 250 × 1.37 */
+                height: 195px;            /* 142 × 1.37 */
+            }
+
+            .business-card .main-section {
+                height: 137px;            /* 100 × 1.37 */
+                padding: 19px;            /* 14 × 1.37 */
+            }
+
+            .business-card .company-header {
+                gap: 10px;                /* 7 × 1.37 */
+                margin-bottom: 25px;      /* 18 × 1.37 */
+            }
+
+            .business-card .company-logo {
+                width: 32px;              /* 23 × 1.37 */
+                height: 32px;
+            }
+
+            .business-card .company-name {
+                font-size: 16px;          /* 11.5 × 1.37 */
+                letter-spacing: 1px;      /* 0.7 × 1.37 */
+            }
+
+            .business-card .employee-info {
+                right: 20px;              /* 14 × 1.37 */
+                top: 58px;                /* 42 × 1.37 */
+            }
+
+            .business-card .card-employee-name {
+                font-size: 16px;          /* 11.5 × 1.37 */
+            }
+
+            .business-card .card-employee-position {
+                font-size: 12px;          /* 8.5 × 1.37 */
+                margin-bottom: 19px;      /* 14 × 1.37 */
+            }
+
+            .business-card .card-contact-item {
+                font-size: 12px;          /* 8.5 × 1.37 */
+            }
+
+            .business-card .website-text {
+                font-size: 14px;          /* 10 × 1.37 */
+            }
+
+            .business-card .footer-logo {
+                width: 48px;              /* 35 × 1.37 */
+                height: 44px;             /* 32 × 1.37 */
+                padding-right: 10px;      /* 7 × 1.37 */
+            }
+
+            .business-card .blue-footer {
+                height: 29px;             /* 21 × 1.37 */
+                padding: 0 19px;          /* 14 × 1.37 */
+            }
+        }
+        @media (max-width: 360px) {
+            .breadcrumb{
+                display: none;
+            }
+
+            .business-card {
+                width: 250px;
+                height: 142px;
+            }
+
+            .business-card .main-section {
+                height: 100px;
+                padding: 14px;
+            }
+
+            .business-card .company-header {
+                display: flex;
+                align-items: center;
+                gap: 7px; 
+                margin-bottom: 18px; 
+            }
+
+            .business-card .company-logo {
+                width: 23px; 
+                height: 23px;
+                object-fit: contain;
+            }
+
+            .business-card .company-name {
+                font-size: 11.5px;
+                letter-spacing: 0.7px;
+            }
+            .business-card .employee-info {
+                right: 14px;       /* 20px × 0.71 */
+                top: 42px;         /* 60px × 0.71 */
+            }
+
+            .business-card .card-employee-name {
+                font-size: 11.5px; /* 16px × 0.71 */
+                font-weight: 700;
+            }
+
+            .business-card .card-employee-position {
+                font-size: 8.5px;  /* 12px × 0.71 */
+                margin-bottom: 14px; /* 20px × 0.71 */
+                font-weight: 500;
+            }
+
+            .business-card .card-contact-item {
+                font-size: 8.5px;  /* 12px × 0.71 */
+                font-weight: 500;
+            }
+
+            .business-card .website-text {
+                font-size: 10px;   /* 14px × 0.71 */
+                font-weight: 500;
+            }
+
+            .business-card .footer-logo {
+                width: 35px;       /* 50px × 0.71 */
+                height: 32px;      /* 45px × 0.71 */
+                padding-right: 7px;/* 10px × 0.71 */
+            }
+
+            .business-card .blue-footer {
+                height: 21px;         /* 30px × 0.71 */
+                padding: 0 14px;      /* 20px × 0.71 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-user-circle"></i> Employee Profile</h1>
+                <div class="breadcrumb">
+                    <a href="#"><i class="fas fa-home"></i> Navana Pharmaceuticals PLC</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Md. Sumon Islam</span>
+                </div>
+            </div>
+        </div>
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-top">
+                <div class="profile-avatar">
+                    <div class="avatar">
+                        <img alt="" src="https://avatars.githubusercontent.com/u/37155442?v=4" width="260" height="260">
+                    </div>
+                    <div class="status-indicator"></div>
+                </div>
+                
+                <div class="profile-info">
+                    <h2>Md. Sumon Islam</h2>
+                    <div class="position">Executive</div>
+                    <div class="department">Information Technology (IT)</div>
+                    <div class="profile-details">
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Head Office</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Joined 15 Jul 2025</span>
+                        </div>
+                        <div class="status-badge">
+                            <i class="fas fa-circle"></i>
+                            <span>Active</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <div class="qr-code">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?data=Name%3A%20Md.%20Sumon%20Islam%0ADesignation%3A%20Executive%0ADepartment%3A%20Information%20Technology%20%28IT%29%0AOffice%3A%20Head%20Office%0AJoining%20Date%3A%2015%20Jul%202025%0AEmail%3A%20sumon@navanapharma.com%0APhone%3A%20%2B8801321130332%0AAddress%3A%20Mirpur%206%2C%20Block%20%23TA%2C%20Road%20%235%2C%20House%20101%2F102%0ABirthday%3A%20March%2009%2C%201998%0ASupervisor%3A%20John%20Smith&size=150x150&color=16-33-139" alt="QR Code"> 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content-grid">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Contact Information -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="card-icon">
+                                <i class="fas fa-address-card"></i>
+                            </div>
+                            <h3>Contact Information</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-label">Email</div>
+                            <div class="contact-value">sumon@navanapharma.com</div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-label">Phone</div>
+                            <div class="contact-value">+8801321 130332</div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-label">Present Address</div>
+                            <div class="contact-value">Mirpur 6, Block #TA, Road #5, House 101/102</div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-birthday-cake"></i>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-label">Birthday</div>
+                            <div class="contact-value">March 09, 1998</div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-label">Supervisor</div>
+                            <div class="contact-value">Malay Kumar Dey</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- Recent Activity -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="card-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3>Visiting Card</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="business-card">
+                            <!-- Main cream section -->
+                            <div class="main-section">
+                                <!-- Company header -->
+                                <div class="company-header">
+                                    <img src="https://cdn.zonebourse.com/static/instruments-logo-145512643" 
+                                        alt="Navana Pharma Logo" 
+                                        class="company-logo">
+                                    <div class="company-name">NAVANA PHARMA</div>
+                                </div>
+
+                                <!-- Employee information -->
+                                <div class="employee-info">
+                                    <div class="card-employee-name">Md. Sumon Islam</div>
+                                    <div class="card-employee-position">Executive, IT</div>
+                                    
+                                    <div class="card-contact-info">
+                                        <div class="card-contact-item">+8801321 130332</div>
+                                        <div class="card-contact-item">sumon@navanapharma.com</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Blue footer section -->
+                            <div class="blue-footer">
+                                <img src="https://cdn.zonebourse.com/static/instruments-logo-145512643" 
+                                    alt="Navana Pharma Logo" 
+                                    class="footer-logo">
+                                <div class="website-text">www.navanapharma.com</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
