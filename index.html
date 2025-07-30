@@ -404,18 +404,20 @@
 
         .card-modal-content {
             width: 100%;
-            max-width: 350px;
+            max-width: 700px;
+            position: relative; /* required for absolute centering */
+            height: 100vh; /* or any height that fits your modal */
         }
-
 
         .card-close-icon {
             position: absolute;
             top: 10px;
-            right: 30px;
+            right: 10px;
             cursor: pointer;
             color: #fff;
             font-size: 25px;
         }
+
         .card-close-icon i {
             transition: color 0.3s ease;
         }
@@ -454,7 +456,14 @@
             90% { opacity: 1; transform: translateY(0); }
             100% { opacity: 0; transform: translateY(20px); }
             }
-
+        
+        #clonedCardContainer .business-card {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(2);
+                transform-origin: center;
+            }
         /* Responsive */
         @media (max-width: 768px) {
             .content-grid {
@@ -489,8 +498,32 @@
                 margin: 0 4px;
             }
 
+            #clonedCardContainer .business-card {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(1.5);
+                transform-origin: center;
+            }
+
+        }
+        @media (min-width: 441px) and (max-width: 680px) {
+            #clonedCardContainer .business-card {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(1.5) rotate(90deg);
+                transform-origin: center;
+            }
         }
         @media (min-width: 341px) and (max-width: 440px) {
+            #clonedCardContainer .business-card {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(1.5) rotate(90deg);
+                transform-origin: center;
+            }
             .profile-details {
                 flex-direction: column;
                 gap: 12px;
