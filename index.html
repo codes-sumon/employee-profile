@@ -432,6 +432,29 @@
             color: #0ea5e9;
         }
 
+        /* Toast Notification */
+        .toast-alert {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #0ea5e9;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            animation: fadeInOut 3s forwards;
+            }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(20px); }
+            10% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(20px); }
+            }
+
         /* Responsive */
         @media (max-width: 768px) {
             .content-grid {
@@ -682,9 +705,21 @@
 
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="js/html2canvas.min.js"></script>
 
     <script>
+        function showToast(message, bgColor = '#0ea5e9') {
+            const toast = document.createElement('div');
+            toast.className = 'toast-alert';
+            toast.style.background = bgColor;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 10000);
+        }
+
         function showCardFullScreen() {
             const originalCard = document.getElementById("mainBusinessCard");
             const clonedCard = originalCard.cloneNode(true);
@@ -726,10 +761,9 @@
                     await navigator.clipboard.write([
                     new ClipboardItem({ "image/png": blob })
                     ]);
-                    alert("✅ Business card copied to clipboard!");
+                    showToast("✅ Business card copied to clipboard!");
                 } catch (err) {
-                    console.error("❌ Clipboard copy failed", err);
-                    alert("❌ Unable to copy to clipboard.");
+                    showToast("❌ Unable to copy to clipboard.");
                 }
                 });
             });
