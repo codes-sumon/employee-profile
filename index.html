@@ -307,11 +307,12 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             border-radius: 8px;
             overflow: hidden;
+            font-family: 'Inter', sans-serif;
         }
 
         .business-card .main-section {
-            height: 140px;
-            padding: 20px;
+            height: 80%;
+            padding: 2.8% 5%;
             position: relative;
             background: #f5f3f0;
         }
@@ -335,68 +336,90 @@
             color: #10218b;
             letter-spacing: 1px;
         }
-
-        .business-card .employee-info {
-            position: absolute;
-            right: 20px;
-            top: 60px;
-            text-align: right;
+        .card-body{
+            display: flex;
+            justify-content: space-between;
         }
-
-        .business-card .card-employee-name {
+        .card-employee-info {
+            text-align: right;
+            line-height: normal;
+        }
+        .card-employee-name{
             font-size: 16px;
             font-weight: 700;
             color: #333;
         }
-
-        .business-card .card-employee-position {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        .business-card .card-contact-info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-
-        .business-card .card-contact-item {
+        .card-employee-position, .card-employee-phone, .card-employee-email{
             font-size: 12px;
             color: #333;
             font-weight: 500;
         }
 
-        .business-card .blue-footer {
-            position: absolute;
-            bottom: 0;
-            left: 0;
+        .card-employee-position {
+            margin-bottom: 18px;
+        }
+
+        .card-qr-code img {
+            width: 80px;
+            height: 80px;
+        }
+        .blue-footer {
             width: 100%;
-            height: 30px;
+            height: 20%;
             background: #5a67d8;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0 20px;
+            gap: 20px;
         }
 
-        .business-card .website-text {
+        .card-website-text {
             color: white;
             font-size: 14px;
             font-weight: 500;
             letter-spacing: 0.5px;
         }
 
-        .business-card .footer-logo {
+        .card-footer-logo {
             width: 50px;
             height: 45px;
             object-fit: contain;
             opacity: 0.9;
             filter: brightness(0) invert(1);
-            padding-right: 10px;
         }
 
+        .card-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card-modal-content {
+            width: 100%;
+            max-width: 350px;
+        }
+
+
+        .card-close-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 24px;
+        }
+        .card-close-icon:hover {
+            color: #f87171;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .content-grid {
@@ -421,142 +444,241 @@
                 text-align: center;
             }
         }
-        @media (max-width: 441px) {
+        @media (min-width: 341px) and (max-width: 440px) {
             .profile-details {
                 flex-direction: column;
                 gap: 12px;
             }
-            .breadcrumb{
-                display: none;
+            .breadcrumb {
+                font-size: 10px;
             }
+            .card{
+                padding: 16px;
+            }
+            .card-header {
+                padding-bottom: 12px;
+                margin-bottom: 16px;
+            }
+            .profile-avatar {
+                margin-bottom: 16px;
+            }
+            .profile-info h2 {
+                font-size: 1.8em;
+            }
+            .profile-info .position {
+                font-size: 1.1em;
+            }
+            .profile-info .department {
+                font-size: 0.95em;
+            }
+            .profile-actions {
+                margin-top: 16px;
+            }
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .left-column, .right-column {
+                gap: 20px;
+            }
+            .card-title h3 {
+                font-size: 1.3em;
+            }
+            .card-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+            }
+            .contact-item {
+                padding: 10px 0;
+            }
+            .contact-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+            }
+            .contact-label {
+                font-size: 12px;
+            }
+            .contact-value {
+                font-size: 14px;
+            }
+            
             .business-card {
-                width: 342px;             /* 250 × 1.37 */
-                height: 195px;            /* 142 × 1.37 */
-            }
-
-            .business-card .main-section {
-                height: 137px;            /* 100 × 1.37 */
-                padding: 19px;            /* 14 × 1.37 */
-            }
-
-            .business-card .company-header {
-                gap: 10px;                /* 7 × 1.37 */
-                margin-bottom: 25px;      /* 18 × 1.37 */
+                width: 280px;
+                height: 165px;
             }
 
             .business-card .company-logo {
-                width: 32px;              /* 23 × 1.37 */
-                height: 32px;
+                width: 24px;
+                height: 24px;
             }
 
             .business-card .company-name {
-                font-size: 16px;          /* 11.5 × 1.37 */
-                letter-spacing: 1px;      /* 0.7 × 1.37 */
+                font-size: 12px;
             }
 
-            .business-card .employee-info {
-                right: 20px;              /* 14 × 1.37 */
-                top: 58px;                /* 42 × 1.37 */
+            .card-employee-name {
+                font-size: 12px;
             }
 
-            .business-card .card-employee-name {
-                font-size: 16px;          /* 11.5 × 1.37 */
+            .card-employee-position,
+            .card-employee-phone,
+            .card-employee-email {
+                font-size: 10px;
             }
 
-            .business-card .card-employee-position {
-                font-size: 12px;          /* 8.5 × 1.37 */
-                margin-bottom: 19px;      /* 14 × 1.37 */
+            .card-qr-code img {
+                width: 60px;
+                height: 60px;
             }
 
-            .business-card .card-contact-item {
-                font-size: 12px;          /* 8.5 × 1.37 */
+            .card-footer-logo {
+                width: 35px;
+                height: 30px;
             }
 
-            .business-card .website-text {
-                font-size: 14px;          /* 10 × 1.37 */
+            .card-website-text {
+                font-size: 11px;
             }
 
-            .business-card .footer-logo {
-                width: 48px;              /* 35 × 1.37 */
-                height: 44px;             /* 32 × 1.37 */
-                padding-right: 10px;      /* 7 × 1.37 */
+            .card-modal-content {
+                max-width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
-            .business-card .blue-footer {
-                height: 29px;             /* 21 × 1.37 */
-                padding: 0 19px;          /* 14 × 1.37 */
-            }
+            /* .business-card {
+                width: 100% !important;
+                height: auto !important;
+                transform: scale(0.95);
+            } */
         }
-        @media (max-width: 440px) {
+
+        @media (max-width: 340px) {
             .breadcrumb{
                 display: none;
+            }
+            .profile-details {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .profile-top {
+                flex-direction: column;
+                align-items: center;
+            }
+            .profile-avatar {
+                margin-bottom: 16px;
+            }
+            .profile-info h2 {
+                font-size: 1.5em;
+            }
+            .profile-info .position {
+                font-size: 1em;
+            }
+            .profile-info .department {
+                font-size: 0.9em;
+            }
+            .profile-actions {
+                margin-top: 16px;
+            }
+            .card {
+                padding: 16px;
+            }
+            .card-header {
+                padding-bottom: 12px;
+                margin-bottom: 16px;
+            }
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .left-column, .right-column {
+                gap: 16px;
+            }
+            .card-title h3 {
+                font-size: 1.2em;
+            }
+            .card-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 12px;
+            }
+            .contact-item {
+                padding: 8px 0;
+            }
+            .contact-icon {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+            }
+            .contact-label {
+                font-size: 10px;
+            }
+            .contact-value {
+                font-size: 12px;
             }
 
             .business-card {
                 width: 250px;
-                height: 142px;
-            }
-
-            .business-card .main-section {
-                height: 100px;
-                padding: 14px;
-            }
-
-            .business-card .company-header {
-                display: flex;
-                align-items: center;
-                gap: 7px; 
-                margin-bottom: 18px; 
+                height: 150px;
             }
 
             .business-card .company-logo {
-                width: 23px; 
-                height: 23px;
-                object-fit: contain;
+                width: 20px;
+                height: 20px;
             }
 
             .business-card .company-name {
-                font-size: 11.5px;
-                letter-spacing: 0.7px;
-            }
-            .business-card .employee-info {
-                right: 14px;       /* 20px × 0.71 */
-                top: 42px;         /* 60px × 0.71 */
+                font-size: 11px;
             }
 
-            .business-card .card-employee-name {
-                font-size: 11.5px; /* 16px × 0.71 */
-                font-weight: 700;
+            .card-employee-name {
+                font-size: 11px;
             }
 
-            .business-card .card-employee-position {
-                font-size: 8.5px;  /* 12px × 0.71 */
-                margin-bottom: 14px; /* 20px × 0.71 */
-                font-weight: 500;
+            .card-employee-position,
+            .card-employee-phone,
+            .card-employee-email {
+                font-size: 9px;
             }
 
-            .business-card .card-contact-item {
-                font-size: 8.5px;  /* 12px × 0.71 */
-                font-weight: 500;
+            .card-qr-code img {
+                width: 50px;
+                height: 50px;
             }
 
-            .business-card .website-text {
-                font-size: 10px;   /* 14px × 0.71 */
-                font-weight: 500;
+            .card-footer-logo {
+                width: 30px;
+                height: 26px;
             }
 
-            .business-card .footer-logo {
-                width: 35px;       /* 50px × 0.71 */
-                height: 32px;      /* 45px × 0.71 */
-                padding-right: 7px;/* 10px × 0.71 */
+            .card-website-text {
+                font-size: 10px;
             }
 
-            .business-card .blue-footer {
-                height: 21px;         /* 30px × 0.71 */
-                padding: 0 14px;      /* 20px × 0.71 */
-            }
         }
     </style>
+    <script>
+        function showCardFullScreen() {
+            const originalCard = document.getElementById("mainBusinessCard");
+            const clonedCard = originalCard.cloneNode(true);
+
+            // Optional: Remove ID from cloned version to avoid duplicates
+            clonedCard.removeAttribute("id");
+
+            const container = document.getElementById("clonedCardContainer");
+            container.innerHTML = ""; // clear previous
+            container.appendChild(clonedCard);
+
+            document.getElementById("cardModal").style.display = "flex";
+        }
+
+        function hideCardFullScreen() {
+            document.getElementById("cardModal").style.display = "none";
+        }
+    </script>
+
 </head>
 <body>
     <div class="container">
@@ -602,7 +724,7 @@
 
                 <div class="profile-actions">
                     <div class="qr-code">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?data=Name%3A%20Md.%20Sumon%20Islam%0ADesignation%3A%20Executive%0ADepartment%3A%20Information%20Technology%20%28IT%29%0AOffice%3A%20Head%20Office%0AJoining%20Date%3A%2015%20Jul%202025%0AEmail%3A%20sumon@navanapharma.com%0APhone%3A%20%2B8801321130332%0AAddress%3A%20Mirpur%206%2C%20Block%20%23TA%2C%20Road%20%235%2C%20House%20101%2F102%0ABirthday%3A%20March%2009%2C%201998%0ASupervisor%3A%20Malay%20Kumar%20Dey&size=150x150&color=16-33-139" alt="QR Code"> 
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?data=BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3AMd.%20Sumon%20Islam%0AN%3AIslam%3BMd.%20Sumon%3B%3B%3B%0AORG%3ANavana%20Pharmaceuticals%20PLC%3BInformation%20Technology%20(IT)%0ATITLE%3AExecutive%0AEMAIL%3BTYPE%3DINTERNET%2CWORK%3Asumon%40navanapharma.com%0ATEL%3BTYPE%3DCALL%2CWORK%3A%2B8801321130332%0AADR%3BTYPE%3DWORK%3A%3B%3B99%20Gulshan%20Avenue%2C%20Rupayan%20Golden%20Age%2C%206th%20Floor%2C%20Plot-6%2C%20Block-CWN(C)%3BDhaka%3B%3B1212%3BBangladesh%0AURL%3Awww.navanapharma.com%0AEND%3AVCARD&size=150x150&color=10218b" alt="Contact QR Code with Website">
                     </div>
                 </div>
             </div>
@@ -695,43 +817,54 @@
                             </div>
                             <h3>Visiting Card</h3>
                         </div>
+                        <div class="card-actions">
+                            <i class="fas fa-arrows-alt" onclick="showCardFullScreen()"></i>
+                        </div>
                     </div>
                     
                     <div class="activity-item">
-                        <div class="business-card">
+                        <div id="mainBusinessCard" class="business-card">
                             <!-- Main cream section -->
                             <div class="main-section">
                                 <!-- Company header -->
                                 <div class="company-header">
-                                    <img src="https://cdn.zonebourse.com/static/instruments-logo-145512643" 
-                                        alt="Navana Pharma Logo" 
-                                        class="company-logo">
+                                    <img src="https://cdn.zonebourse.com/static/instruments-logo-145512643" alt="Navana Pharma Logo" class="company-logo">
                                     <div class="company-name">NAVANA PHARMA</div>
                                 </div>
-
-                                <!-- Employee information -->
-                                <div class="employee-info">
-                                    <div class="card-employee-name">Md. Sumon Islam</div>
-                                    <div class="card-employee-position">Executive, IT</div>
-                                    
-                                    <div class="card-contact-info">
-                                        <div class="card-contact-item">+8801321 130332</div>
-                                        <div class="card-contact-item">sumon@navanapharma.com</div>
+                                
+                                <div class="card-body">
+                                    <div class="card-qr-code">
+                                        <img src="https://api.qrserver.com/v1/create-qr-code/?data=BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3AMd.%20Sumon%20Islam%0AN%3AIslam%3BMd.%20Sumon%3B%3B%3B%0AORG%3ANavana%20Pharmaceuticals%20PLC%3BInformation%20Technology%20(IT)%0ATITLE%3AExecutive%0AEMAIL%3BTYPE%3DINTERNET%2CWORK%3Asumon%40navanapharma.com%0ATEL%3BTYPE%3DCALL%2CWORK%3A%2B8801321130332%0AADR%3BTYPE%3DWORK%3A%3B%3B99%20Gulshan%20Avenue%2C%20Rupayan%20Golden%20Age%2C%206th%20Floor%2C%20Plot-6%2C%20Block-CWN(C)%3BDhaka%3B%3B1212%3BBangladesh%0AURL%3Awww.navanapharma.com%0AEND%3AVCARD&size=150x150&color=10218b" alt="Contact QR Code with Website">
+                                    </div>
+                                    <!-- Employee information -->
+                                    <div class="card-employee-info">
+                                        <div class="card-employee-name">Md. Sumon Islam</div>
+                                        <div class="card-employee-position">Executive, IT</div>
+                                        <div class="card-employee-phone">+8801321 130332</div>
+                                        <div class="card-employee-email">sumon@navanapharma.com</div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Blue footer section -->
                             <div class="blue-footer">
-                                <img src="https://cdn.zonebourse.com/static/instruments-logo-145512643" 
-                                    alt="Navana Pharma Logo" 
-                                    class="footer-logo">
-                                <div class="website-text">www.navanapharma.com</div>
+                                <img src="https://cdn.zonebourse.com/static/instruments-logo-145512643" alt="Navana Pharma Logo" class="card-footer-logo">
+                                <div class="card-website-text">www.navanapharma.com</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Modal -->
+    <div id="cardModal" class="card-modal" onclick="hideCardFullScreen()">
+        <div class="card-modal-content" onclick="event.stopPropagation()">
+            <div class="card-close-icon">
+                <i class="fas fa-times" onclick="hideCardFullScreen()"></i>
+            </div>
+            <div id="clonedCardContainer"></div>
         </div>
     </div>
 </body>
